@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const User = require('../model/user')
 const jwt = require('jsonwebtoken')
-const config = require('../config')
 
 router.post('/login', async function(req, res) {
     const { email, password } = req.body
@@ -36,12 +35,7 @@ router.post('/login', async function(req, res) {
 
 router.post('/register', async function(req, res) {
     const { username, email, password, confirmPassword } = req.body
-    /*
-    const username = req.body.username
-    const email = req.body.email
-    const password = req.body.password
-    const confirmPassword = req.body.confirmPassword
-    */
+
     if(!username) {
         return res.status(422).send({errors: [{title: 'User error', detail: 'Please fill username!'}]})
     }
