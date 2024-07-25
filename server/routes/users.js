@@ -13,7 +13,7 @@ router.post('/login', async function(req, res) {
         return res.status(422).send({errors: [{title: 'User error', detail: 'Please fill passsword!'}]})
     }
     
-    foundUser = await User.findOne({email})
+    foundUser = User.findOne({email})
     try {
         if(!foundUser){
             return res.status(422).send({errors: [{title: 'User error', detail: 'User is not exist!'}]})
@@ -24,7 +24,7 @@ router.post('/login', async function(req, res) {
         const token = jwt.sign({
             userId: foundUser.Id,
             username: foundUser.username
-        }, 'config.SECRET', { expiresIn: '1h'})
+        }, config.SECRET, { expiresIn: '1h'})
 
 
         return res.json(token)
