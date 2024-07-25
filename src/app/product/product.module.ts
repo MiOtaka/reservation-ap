@@ -12,7 +12,7 @@ const routes: Routes = [
     path:'products', component: ProductComponent,
     children: [
       { path:'', component: ProductListComponent},
-  { path:':productId', component: ProductDetailComponent, canActivate: [AuthGuard]}
+      { path:':productId', component: ProductDetailComponent, canActivate: [AuthGuard]}
     ]
   }
 ];

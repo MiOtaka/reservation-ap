@@ -66,7 +66,6 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    debugger
     this.auth.logout()
   }
 }
