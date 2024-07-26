@@ -1,6 +1,5 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const bodyParser = require('body-parser')
 const config = require('./config')
 const SampleDb = require('./sample-db')
 
@@ -20,7 +19,7 @@ mongoose.connect(config.DB_URI)
   );
 
 const app = express()
-app.use(bodyParser.json())
+app.use(express.json())
 
 app.use('/api/v1/products', productRoutes)
 app.use('/api/v1/users', userRoutes)
